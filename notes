@@ -6,4 +6,110 @@ A Tutorial Introduction to the Lambda Calculus
 〈 function 〉∷= λ〈 name 〉. 〈 expresssion 〉
 〈 application 〉∷= 〈 expression 〉〈 expression 〉
 
+E₁E₂E₃⋯Eₙ
+(⋯((E₁E₂)E₃)⋯Eₙ)
+λx.x ≡ (λx.x)
+
+(λx.x)y
+
+(λx.x)y → y
+(λ∇.∇)y → y
+
+(λx.x)y → [y/x]x → y
+
+(λz.z) ≡ (λy.y) ≡ (λt.t) ≡ (λu.u)
+
+This is called α-reduction.
+
+(λx.x)(λy.yx) → λy.yx
+
+(λx.xy)(λy.y)
+
+The variable y is both free and bound in the previous expression.
+
+I ≡ λx.x
+
+II ≡ (λx.x)(λx.x)
+
+To empasize the difference we can rewrite the above expression.
+
+II ≡ (λx.x)(λz.z)
+
+The identity function applied to itself yields itself.
+
+[(λz.z)/x]x → λz.z ≡ I
+
+We should be carefull when performing subtitutions and avoid mixing up free occurences with bound ones.
+
+(λx.(λy.xy))y
+
+An incorrect subtitutions would mix up the two identifiers.
+
+(λy.yy)
+
+We can resolve this by simply renaming the bound y to t.
+
+(λx.(λt.xt))y → (λt.yt)
+
+(λx.(λy.(x(λx.xy))))y → [y/x](λt.(x(λx.xt))) → (λt.(y(λx.xt)))
+
+⒉ Arithmetic
+
+Numbers are represented in λ-calculus starting from zero and writing "successor of zero",
+
+that is "suc(zero)", to represent 1, "suc(suc(zero))" to represent, and so on.
+
+Zero will be defined as following.
+
+λs.(λz.z)
+
+The first natural numbers can be defined using functions.
+
+0 ≡ λs.λz.z
+
+1 ≡ λs.λz.s(z)
+
+2 ≡ λs.λz.s(s(z))
+
+3 ≡ λs.λz.s(s(s(z)))
+
+  ⋮
+
+If we want to apply f to a three times, we apply the function 3 to the arguments f and a.
+
+3fa → (λs.λz.s(s(sz)))fa → f(f(fa))
+
+This way of defining numbers gives us with a language construct similar to "FOR i=1 to 3".
+
+As for the number 0 applied to the arguments f and a yields a unchanged.
+
+0fa = (λs.λz.z)fa → a
+
+The successor function can be defined as follows.
+
+S ≡ λn.λa.λb.a(nab)
+
+For example, the succerssor fuction applied to 0.
+
+S0 ≡ (λn.λa.λb.a(nab))0
+
+S0 → λa.λb.a(0ab) → λa.λb.a(b) ≡ 1
+
+S1 ≡ (λn.λa.λb.a(nab))1 → λa.λb.a(1ab) → λa.λb.a(ab) ≡ 2
+
+Ⅰ Addition
+
+2S3 ≡ (λs.λz.s(sz))S3 → S(S3) → S(4) → 5
+
+This compute 2 + 3.
+
+In general, m + n can be computed with mSn.
+
+Ⅱ Multiplication
+
+(λx.λy.λa.x(ya))
+
+The product of 3 by is 3 is the following.
+
+(λx.λy.λa.x(ya))33 → (λa.3(3a)) → (λa.(λs.λz.s(s(sz)))3a) → 
 
