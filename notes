@@ -1,0 +1,9 @@
+A Tutorial Introduction to the Lambda Calculus
+
+⒈ Definition
+
+〈 expression 〉∷=〈 name 〉|〈 function 〉|〈 application 〉
+〈 function 〉∷= λ〈 name 〉. 〈 expresssion 〉
+〈 application 〉∷= 〈 expression 〉〈 expression 〉
+
+
