@@ -111,5 +111,36 @@ In general, m + n can be computed with mSn.
 
 The product of 3 by is 3 is the following.
 
-(λx.λy.λa.x(ya))33 → (λa.3(3a)) → (λa.(λs.λz.s(s(sz)))3a) → 
+(λx.λy.λa.x(ya))33 → (λa.3(3a)) → (λa.(λs.λb.s(s(sb)))(3a)) → (λa.λb.(3a)((3a)((3a)b)))
 
+⒊ Conditionals
+
+T ≡ λx.λy.x
+
+F ≡ λx.λy.y
+
+Ⅰ Logical operations
+
+∧ ≡ λx.λy.xyF
+
+∨ ≡ λx.λy.xTy
+
+¬ ≡ λx.xFT
+
+¬T ≡ (λx.xFT)T
+
+TFT ≡ (λc.λd.c)FT → F
+
+Ⅱ A conditional test
+
+Z ≡ λx.xF¬F
+
+0fa ≡ (λs.λz.z)fa ≡ a
+
+Fa ≡ (λx.λy.y)a → λy.y ≡ I
+
+Z0 ≡ (λx.xF¬F)0 → 0F¬F → ¬F → T
+
+ZN ≡ (λx.xF¬F)N → NF¬F
+
+IF → F
