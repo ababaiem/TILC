@@ -6,20 +6,46 @@ A Tutorial Introduction to the Lambda Calculus
 〈 function 〉∷= λ〈 name 〉. 〈 expresssion 〉
 〈 application 〉∷= 〈 expression 〉〈 expression 〉
 
+
+In order to simplify expresssions, function application associates from the left.
+
 E₁E₂E₃⋯Eₙ
+
+As such, the above composite expression is evaluated as follows:
+
 (⋯((E₁E₂)E₃)⋯Eₙ)
+
+
+The identity function is a good example of a function, be it enclosed or not in parentheses:
+
 λx.x ≡ (λx.x)
 
+The equivalence symbol "≡" indicates that when A ≡ B, A is simply as synonym for B.
+
+
+Functions can be applied to expressions. The following is an example of an application:
+
 (λx.x)y
+
+Parenthesis help us to avoid ambiguity here. They remain, however, optional.
 
 (λx.x)y → y
 (λ∇.∇)y → y
 
+
+The notation [y/x] is used to indicate that all "x" are to be substituted by y in the function's body.
+
 (λx.x)y → [y/x]x → y
+
+
+The names do not carry meaning themselves, they are simply "place holders".
 
 (λz.z) ≡ (λy.y) ≡ (λt.t) ≡ (λu.u)
 
-This is called α-reduction.
+This alphabetical substition is called α-reduction.
+
+
+⒈ ⒈ Free and boud variables
 
 (λx.x)(λy.yx) → λy.yx
 
